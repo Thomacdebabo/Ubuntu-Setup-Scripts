@@ -93,6 +93,8 @@ execute sudo apt-get update
 
 # TLP manager
 execute sudo add-apt-repository ppa:linrunner/tlp -y
+
+execute sudo add-apt-repository ppa:malcscott/ppa -y
 execute sudo apt-get update
 execute sudo apt-get install tlp tlp-rdw -y
 sudo tlp start
@@ -151,14 +153,14 @@ fi
 
 
 # Grub customization
-execute sudo apt-get install grub-customizer -y
+#execute sudo apt-get install grub-customizer -y
 
 # Screen Recorder
 execute sudo apt-get update
 execute sudo apt-get install kazam -y
 
 # Bitwarden
-sudo snap install bitwarden
+sudo snap install bitwarden -y
 
 # VLC
 execute sudo apt-get install vlc -y
@@ -185,10 +187,10 @@ sudo apt-get install network-manager -y
 sudo apt-get install network-manager-openvpn -y
 
 # Install Reminna
-sudo snap install remmina
+sudo snap install remmina -y
 
 # Install OnlyOffice
-sudo snap install onlyoffice-desktopeditors
+sudo snap install onlyoffice-desktopeditors -y
 
 # Install tor
 #if [[ ! -n $(lsb_release -d | grep 18) ]]; then
@@ -206,16 +208,16 @@ sudo snap install onlyoffice-desktopeditors
 
 
 # keepass2
-sudo apt-get install keepass2
+sudo apt-get install keepass2 -y
 
 # megasync
 execute wget https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
-execute sudo apt install ./megasync-xUbuntu_22.04_amd64.deb
+execute sudo apt install ./megasync-xUbuntu_22.04_amd64.deb -y
 execute rm megasync-xUbuntu_22.04_amd64.deb
 
 # install Obsidian md
 execute wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.12/obsidian_1.5.12_amd64.deb
-execute sudo apt install ./obsidian_1.5.12_amd64.deb
+execute sudo apt install ./obsidian_1.5.12_amd64.deb -y
 execute rm obsidian_1.5.12_amd64.deb
 
 
