@@ -220,6 +220,15 @@ execute wget https://github.com/obsidianmd/obsidian-releases/releases/download/v
 execute sudo apt install ./obsidian_1.5.12_amd64.deb -y
 execute rm obsidian_1.5.12_amd64.deb
 
+# install parsec
+execute wget https://builds.parsec.app/package/parsec-linux.deb
+execute sudo apt install ./parsec-linux.deb
+execute rm parsec-linux.deb
+
+# install slack
+sudo snap install slack
+
+
 
 if [[ ! -n $CIINSTALL ]]; then
     su - ${USER}  # For user being added to docker group to take effect
