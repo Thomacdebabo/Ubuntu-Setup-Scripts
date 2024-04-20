@@ -48,7 +48,7 @@ elif [[ $XDG_CURRENT_DESKTOP = *"GNOME"* ]]; then
 elif [[ $XDG_CURRENT_DESKTOP = *"MATE"* ]]; then
     execute sudo apt-get install mate-tweak -y
 fi
-execute sudo apt-get install arc-theme -y
+#execute sudo apt-get install arc-theme -y
 execute sudo apt-get install curl -y
 
 # Install code editor of your choice
@@ -80,11 +80,16 @@ elif [ "$tempvar" = "q" ];then
     echo "Skipping this step"
 fi
 
+
+
+
 ### General Software from now on ###
 
 # Enable partner repositories if disabled
 sudo sed -i.bak "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 execute sudo apt-get update
+
+
 
 # TLP manager
 execute sudo add-apt-repository ppa:linrunner/tlp -y
@@ -165,8 +170,8 @@ execute sudo apt-get install vmg -y # Virtual magnifying glass, enabled by short
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 execute sudo apt-get update  -y
-execute sudo apt-get install google-chrome-stable -y
-#execute sudo apt-get install chromium-browser -y
+#execute sudo apt-get install google-chrome-stable -y
+execute sudo apt-get install chromium-browser -y
 execute sudo apt-get install firefox -y
 
 # XRDP that can be opened on port 3389, from https://www.e2enetworks.com/help/knowledge-base/how-to-install-remote-desktop-xrdp-on-ubuntu-18-04/
@@ -198,6 +203,21 @@ sudo snap install onlyoffice-desktopeditors
 # # execute sudo apt-add-repository ppa:i2p-maintainers/i2p -y
 # # execute sudo apt-get update -y
 # # execute sudo apt-get install i2p -y
+
+
+# keepass2
+sudo apt-get install keepass2
+
+# megasync
+execute wget https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
+execute sudo apt install ./megasync-xUbuntu_22.04_amd64.deb
+execute rm megasync-xUbuntu_22.04_amd64.deb
+
+# install Obsidian md
+execute wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.12/obsidian_1.5.12_amd64.deb
+execute sudo apt install ./obsidian_1.5.12_amd64.deb
+execute rm obsidian_1.5.12_amd64.deb
+
 
 if [[ ! -n $CIINSTALL ]]; then
     su - ${USER}  # For user being added to docker group to take effect

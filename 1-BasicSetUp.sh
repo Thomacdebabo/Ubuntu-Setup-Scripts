@@ -48,6 +48,8 @@ execute sudo apt-get install tilda tmux byobu -y
 execute sudo apt-get install gimp -y
 execute sudo apt-get install xclip xsel -y # this is used for the copying tmux buffer to clipboard buffer
 execute sudo apt-get install vim-gui-common vim-runtime -y
+execute sudo apt-get install nala -y
+
 cp ./config_files/vimrc ~/.vimrc
 # refer : [http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting-ubuntu/] for tmux buffers in ubuntu
 cp ./config_files/tmux.conf ~/.tmux.conf
@@ -98,46 +100,48 @@ aria2c --file-allocation=none -c -x 10 -s 10 --dir /tmp -o bat.deb $latest_bat_s
 execute sudo dpkg -i /tmp/bat.deb
 execute sudo apt-get install -f
 
-# Check if Anaconda's Miniconda is already installed
-if [[ -n $(echo $PATH | grep 'conda') ]]; then
-    echo "Anaconda is already installed, skipping installation"
-    echo "To reinstall, delete the Anaconda install directory (/opt/anaconda3 if done by this script) and remove from PATH as well"
-else
+# # Check if Anaconda's Miniconda is already installed
+# if [[ -n $(echo $PATH | grep 'conda') ]]; then
+#     echo "Anaconda is already installed, skipping installation"
+#     echo "To reinstall, delete the Anaconda install directory (/opt/anaconda3 if done by this script) and remove from PATH as well"
+# else
 
-    spatialPrint "Installing the latest Anaconda Python in /opt/anaconda3"
-    latest_anaconda_setup="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-    aria2c --file-allocation=none -c -x 10 -s 10 -o anacondaInstallScript.sh --dir ./extras ${continuum_website}${latest_anaconda_setup}
-    sudo mkdir -p /opt/anaconda3 && sudo chmod ugo+w /opt/anaconda3
-    execute bash ./extras/anacondaInstallScript.sh -f -b -p /opt/anaconda3
+#     spatialPrint "Installing the latest Anaconda Python in /opt/anaconda3"
+#     latest_anaconda_setup="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+#     aria2c --file-allocation=none -c -x 10 -s 10 -o anacondaInstallScript.sh --dir ./extras ${continuum_website}${latest_anaconda_setup}
+#     sudo mkdir -p /opt/anaconda3 && sudo chmod ugo+w /opt/anaconda3
+#     execute bash ./extras/anacondaInstallScript.sh -f -b -p /opt/anaconda3
 
-    spatialPrint "Setting up your anaconda"
-    execute /opt/anaconda3/bin/conda update conda -y
-    execute /opt/anaconda3/bin/conda clean --all -y
-    execute /opt/anaconda3/bin/conda install anaconda -y
-    execute /opt/anaconda3/bin/conda install ipython -y
+#     spatialPrint "Setting up your anaconda"
+#     execute /opt/anaconda3/bin/conda update conda -y
+#     execute /opt/anaconda3/bin/conda clean --all -y
+#     execute /opt/anaconda3/bin/conda install anaconda -y
+#     execute /opt/anaconda3/bin/conda install ipython -y
 
-    execute /opt/anaconda3/bin/conda install libgcc -y
-    execute /opt/anaconda3/bin/pip install numpy scipy matplotlib scikit-learn scikit-image jupyter notebook pandas h5py cython jupyterlab
-    execute /opt/anaconda3/bin/pip install msgpack
-    execute /opt/anaconda3/bin/conda install line_profiler -y
-    sed -i.bak "/anaconda3/d" ~/.zshrc
+#     execute /opt/anaconda3/bin/conda install libgcc -y
+#     execute /opt/anaconda3/bin/pip install numpy scipy matplotlib scikit-learn scikit-image jupyter notebook pandas h5py cython jupyterlab
+#     execute /opt/anaconda3/bin/pip install msgpack
+#     execute /opt/anaconda3/bin/conda install line_profiler -y
+#     sed -i.bak "/anaconda3/d" ~/.zshrc
 
-    /opt/anaconda3/bin/conda info -a
+#     /opt/anaconda3/bin/conda info -a
 
-    spatialPrint "Adding anaconda to path variables"
-    {
-        echo "# Anaconda Python. Change the \"conda activate base\" to whichever environment you would like to activate by default"
-        echo ". /opt/anaconda3/etc/profile.d/conda.sh"
-        echo "conda activate base"
-    } >> ~/.zshrc
+#     spatialPrint "Adding anaconda to path variables"
+#     {
+#         echo "# Anaconda Python. Change the \"conda activate base\" to whichever environment you would like to activate by default"
+#         echo ". /opt/anaconda3/etc/profile.d/conda.sh"
+#         echo "conda activate base"
+#     } >> ~/.zshrc
 
-fi # Anaconda Installation end
+# fi # Anaconda Installation end
 
 # echo "*************************** NOTE *******************************"
 # echo "If you ever mess up your anaconda installation somehow, do"
 # echo "\$ conda remove anaconda matplotlib mkl mkl-service nomkl openblas"
 # echo "\$ conda clean --all"
 # echo "Do this for each environment as well as your root. Then reinstall all except nomkl"
+
+curl https://pyenv.run | bash
 
 # For utilities such as lspci
 execute sudo apt-get install pciutils
