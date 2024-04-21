@@ -43,7 +43,7 @@ fi
 # Choice for terminal that will be adopted: Tilda+tmux
 # Not guake because tilda is lighter on resources
 # Not terminator because tmux sessions continue to run if you accidentally close the terminal emulator
-execute sudo apt-get install git wget curl -y
+execute sudo apt-get install git wget curl net-tools -y
 execute sudo apt-get install tilda tmux byobu -y
 execute sudo apt-get install gimp -y
 execute sudo apt-get install xclip xsel -y # this is used for the copying tmux buffer to clipboard buffer
@@ -141,8 +141,15 @@ execute sudo apt-get install -f
 # echo "\$ conda clean --all"
 # echo "Do this for each environment as well as your root. Then reinstall all except nomkl"
 
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils \
+tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+sudo apt-get install cmake -y
 curl https://pyenv.run | bash
-
+echo echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
 # For utilities such as lspci
 execute sudo apt-get install pciutils
 
