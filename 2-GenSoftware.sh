@@ -43,7 +43,6 @@ OS_VERSION=$(get_os_lts_version)
 if [[ $XDG_CURRENT_DESKTOP = *"Unity"* ]]; then	# To be removed once Unity is phased out
     execute sudo apt-get install unity-tweak-tool -y
 elif [[ $XDG_CURRENT_DESKTOP = *"GNOME"* ]]; then
-    execute sudo apt-get install gnome-tweak-tool -y
     execute sudo apt-get install gnome-shell-extensions -y
 elif [[ $XDG_CURRENT_DESKTOP = *"MATE"* ]]; then
     execute sudo apt-get install mate-tweak -y
@@ -159,8 +158,6 @@ fi
 execute sudo apt-get update
 execute sudo apt-get install kazam -y
 
-# Bitwarden
-sudo snap install bitwarden -y
 
 # VLC
 execute sudo apt-get install vlc -y
@@ -186,11 +183,8 @@ sudo /etc/init.d/xrdp restart
 sudo apt-get install network-manager -y
 sudo apt-get install network-manager-openvpn -y
 
-# Install Reminna
-sudo snap install remmina -y
 
-# Install OnlyOffice
-sudo snap install onlyoffice-desktopeditors -y
+
 
 # Install tor
 #if [[ ! -n $(lsb_release -d | grep 18) ]]; then
@@ -208,25 +202,17 @@ sudo snap install onlyoffice-desktopeditors -y
 
 
 # keepass2
-sudo apt-get install keepass2 -y
+sudo apt-get install keepassxc -y
 
-# megasync
-execute wget https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb
-execute sudo apt install ./megasync-xUbuntu_22.04_amd64.deb -y
-execute rm megasync-xUbuntu_22.04_amd64.deb
 
-# install Obsidian md
-execute wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.12/obsidian_1.5.12_amd64.deb
-execute sudo apt install ./obsidian_1.5.12_amd64.deb -y
-execute rm obsidian_1.5.12_amd64.deb
 
 # install parsec
-execute wget https://builds.parsec.app/package/parsec-linux.deb
-execute sudo apt install ./parsec-linux.deb
-execute rm parsec-linux.deb
+# execute wget https://builds.parsec.app/package/parsec-linux.deb
+# execute sudo apt install ./parsec-linux.deb
+# execute rm parsec-linux.deb
 
 # install slack
-sudo snap install slack
+# sudo snap install slack
 
 
 
