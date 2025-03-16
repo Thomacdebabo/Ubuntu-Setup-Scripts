@@ -42,6 +42,12 @@ alias l='ls -CF'
 alias grep='grep --color=auto'
 alias diff='colordiff'
 
+alias apt="sudo nala"
+alias maxvol="pactl set-sink-volume @DEFAULT_SINK@ 150%"
+
+export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+export FZF_DEFAULT_COMMAND="fdfind --type f"
+
 
 
 

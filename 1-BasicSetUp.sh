@@ -43,25 +43,17 @@ execute sudo apt-get install ubuntu-restricted-extras -y
 # Not guake because tilda is lighter on resources
 # Not terminator because tmux sessions continue to run if you accidentally close the terminal emulator
 execute sudo apt-get install git wget curl net-tools -y
-execute sudo apt-get install tilda tmux byobu -y
 execute sudo apt-get install gimp -y
 execute sudo apt-get install xclip xsel -y # this is used for the copying tmux buffer to clipboard buffer
 execute sudo apt-get install vim-gui-common vim-runtime -y
-execute sudo apt-get install nala -y
 
+execute sudo apt install gnome-tweaks
 execute sudo apt-get install aria2 -y
 
 
 # Now create shortcuts
-execute sudo apt-get install run-one xbindkeys xbindkeys-config wmctrl xdotool -y
-cp ./config_files/xbindkeysrc ~/.xbindkeysrc
-
-# Now download and install bat
-spatialPrint "Installing bat, a handy replacement for cat"
-latest_bat_setup=$(curl --silent "https://api.github.com/repos/sharkdp/bat/releases/latest" | grep "deb" | grep "browser_download_url" | head -n 1 | cut -d \" -f 4)
-aria2c --file-allocation=none -c -x 10 -s 10 --dir /tmp -o bat.deb $latest_bat_setup
-execute sudo dpkg -i /tmp/bat.deb
-execute sudo apt-get install -f
+# execute sudo apt-get install run-one xbindkeys xbindkeys-config wmctrl xdotool -y
+# cp ./config_files/xbindkeysrc ~/.xbindkeysrc
 
 
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \

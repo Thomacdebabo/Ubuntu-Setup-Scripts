@@ -12,3 +12,5 @@ alias server="ifconfig | grep inet && python3 -m http.server"
 
 alias apt="sudo nala"
 alias maxvol="pactl set-sink-volume @DEFAULT_SINK@ 150%"
+export FZF_DEFAULT_OPTS="--preview 'bat --color=always {}'"
+export FZF_DEFAULT_COMMAND="fdfind --type f"

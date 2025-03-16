@@ -1,7 +1,7 @@
 SCRIPT_DIR=$(dirname $0)
 
 
-sudo apt install zsh -y
+sudo apt install zsh tmux -y
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
 
