@@ -1,6 +1,18 @@
 SCRIPT_DIR=$(dirname $0)
+
+
 sudo apt install zsh -y
 curl -s https://ohmyposh.dev/install.sh | bash -s
+
+
+# Antigen
+ANITGEN_PATH=~/.antigen
+curl -L git.io/antigen > $ANITGEN_PATH/antigen.zsh
+echo "source $ANITGEN_PATH/antigen.zsh" >> ~/.zshrc
+# load all lines from ./config_files/antigen.sh into zshrc
+cat ./config_files/antigen.sh >> ~/.zshrc
+echo "export TERM=xterm-256color" >> ~/.zshrc   
+
 
 command -v zsh | sudo tee -a /etc/shells
 mkdir -p ~/.themes
@@ -13,16 +25,4 @@ echo 'eval "$(oh-my-posh init zsh --config ~/.themes/lambdageneration.omp.json)"
 
 sudo chsh -s "$(command -v zsh)" "${USER}"
 
-# Create bash aliases
-cp ./config_files/bash_aliases /opt/.zsh/bash_aliases >/dev/null  # Suppress error messages in case the file already exists
-rm -f ~/.bash_aliases
-ln -s /opt/.zsh/bash_aliases ~/.bash_aliases
 
-{
-    echo "if [ -f ~/.bash_aliases ]; then"
-    echo "  source ~/.bash_aliases"
-    echo "fi"
-
-    echo "# Switching to 256-bit colour by default so that zsh-autosuggestion's suggestions are not suggested in white, but in grey instead"
-    echo "export TERM=xterm-256color"
-} >> ~/.zshrc

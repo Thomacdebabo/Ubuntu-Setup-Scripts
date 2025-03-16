@@ -204,6 +204,8 @@ sudo apt-get install network-manager-openvpn -y
 # keepass2
 sudo apt-get install keepassxc -y
 
+# Thunderbird
+sudo apt-get install thunderbird -y
 
 
 # install parsec
