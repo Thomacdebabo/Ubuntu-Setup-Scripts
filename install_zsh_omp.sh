@@ -1,9 +1,14 @@
+SCRIPT_DIR=$(dirname $0)
 sudo apt install zsh -y
 curl -s https://ohmyposh.dev/install.sh | bash -s
 
 command -v zsh | sudo tee -a /etc/shells
 mkdir -p ~/.themes
+
+cd ~/.themes
 wget https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/lambdageneration.omp.json
+cd $SCRIPT_DIR
+echo "export PATH=$PATH:~/.local/bin" >> ~/.zshrc
 echo 'eval "$(oh-my-posh init zsh --config ~/.themes/lambdageneration.omp.json)"' >> ~/.zshrc
 
 sudo chsh -s "$(command -v zsh)" "${USER}"
