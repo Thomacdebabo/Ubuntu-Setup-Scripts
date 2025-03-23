@@ -18,7 +18,6 @@ execute () {
         echo "$OUTPUT"
         echo ""
         echo "Failed to Execute $*" >&2
-        exit 1
     fi
 }
 
