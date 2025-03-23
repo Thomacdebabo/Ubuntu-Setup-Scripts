@@ -7,6 +7,7 @@ curl -s https://ohmyposh.dev/install.sh | bash -s
 
 # Antigen
 ANITGEN_PATH=~/.antigen
+mkdir -p $ANITGEN_PATH
 curl -L git.io/antigen > $ANITGEN_PATH/antigen.zsh
 echo "source $ANITGEN_PATH/antigen.zsh" >> ~/.zshrc
 # load all lines from ./config_files/antigen.sh into zshrc
