@@ -12,6 +12,7 @@ curl -L git.io/antigen > $ANITGEN_PATH/antigen.zsh
 echo "source $ANITGEN_PATH/antigen.zsh" >> ~/.zshrc
 # load all lines from ./config_files/antigen.sh into zshrc
 cat ./config_files/antigen.sh >> ~/.zshrc
+cat ./config_files/bash_aliases.sh >> ~/.zshrc
 echo "export TERM=xterm-256color" >> ~/.zshrc   
 
 
