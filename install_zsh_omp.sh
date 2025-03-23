@@ -12,8 +12,9 @@ curl -L git.io/antigen > $ANITGEN_PATH/antigen.zsh
 echo "source $ANITGEN_PATH/antigen.zsh" >> ~/.zshrc
 # load all lines from ./config_files/antigen.sh into zshrc
 cat ./config_files/antigen.sh >> ~/.zshrc
-cat ./config_files/bash_aliases.sh >> ~/.zshrc
-echo "export TERM=xterm-256color" >> ~/.zshrc   
+cat ./config_files/bash_aliases >> ~/.zshrc
+
+echo "export TERM=xterm-256color" >> ~/.zshrc
 
 
 command -v zsh | sudo tee -a /etc/shells
@@ -26,5 +27,5 @@ echo "export PATH=$PATH:~/.local/bin" >> ~/.zshrc
 echo 'eval "$(oh-my-posh init zsh --config ~/.themes/lambdageneration.omp.json)"' >> ~/.zshrc
 
 sudo chsh -s "$(command -v zsh)" "${USER}"
-
+exec zsh
 
