@@ -3,7 +3,7 @@ SCRIPT_DIR=$(dirname $0)
 
 sudo apt install zsh tmux -y
 curl -s https://ohmyposh.dev/install.sh | bash -s
-
+touch ~/.zshrc
 
 # Antigen
 ANITGEN_PATH=~/.antigen
